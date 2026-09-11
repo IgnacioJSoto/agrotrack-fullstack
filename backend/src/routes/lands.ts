@@ -25,4 +25,21 @@ router.get('/', (req, res) => {
   res.json(lands);
 });
 
+router.post('/', (req, res) => {
+  const { name, location, area, crop, status } = req.body;
+
+  const newLand = {
+    id: lands.length + 1,
+    name,
+    location,
+    area,
+    crop,
+    status: status || 'active'
+  };
+
+  lands.push(newLand);
+
+  res.status(201).json(newLand);
+});
+
 export default router;
