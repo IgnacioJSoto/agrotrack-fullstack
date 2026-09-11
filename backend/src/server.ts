@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import landsRouter from './routes/lands';
 
 dotenv.config();
 
@@ -17,6 +18,8 @@ app.get('/', (req, res) => {
     status: 'running'
   });
 });
+
+app.use('/api/lands', landsRouter);
 
 app.listen(PORT, () => {
   console.log(`AgroTrack API running on port ${PORT}`);
